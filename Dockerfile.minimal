@@ -1,4 +1,4 @@
-FROM hebryan/ubuntu20.04-llvm-clang9.0-minimal AS BUILDSTAGE
+FROM ubuntu:20.04 AS BUILDSTAGE
 
 ARG TZ=Asia/Shanghai
 ENV TZ ${TZ}
@@ -28,6 +28,8 @@ RUN git clone --recurse-submodules -b v1.52.0 --depth 1 --shallow-submodules htt
 RUN mkdir -p /opt/grpc/cmake/build
 WORKDIR /opt/grpc/cmake/build
 RUN cmake -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_SHARED_LIBS=ON \
       -DgRPC_INSTALL=ON \
       -DgRPC_BUILD_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
