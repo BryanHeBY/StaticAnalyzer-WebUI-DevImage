@@ -31,7 +31,8 @@ jobs:
         id: build
         uses: docker/build-push-action@v2
         with:
-          file: Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -61,7 +62,8 @@ jobs:
         id: build
         uses: docker/build-push-action@v2
         with:
-          file: Dockerfile.minimal
+          context: .
+          file: ./Dockerfile.minimal
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
