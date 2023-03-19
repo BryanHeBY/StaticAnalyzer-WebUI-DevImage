@@ -13,19 +13,17 @@ WORKDIR /opt
 RUN git clone --recurse-submodules -b v1.52.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
 WORKDIR /opt/grpc
 RUN mkdir -p cmake/build && \
-    pushd cmake/build && \
+    cd cmake/build && \
     cmake -G Ninja \
       -DgRPC_INSTALL=ON \
       -DgRPC_BUILD_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ../.. && \
-    ninja install && \
-    popd
+    ninja install
 
 # build example 
 WORKDIR /opt/grpc/examples/cpp/helloworld
 RUN mkdir -p cmake/build && \
-    pushd cmake/build && \
-    cmake -G Ninja -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../.. && \
-    ninja && \
-    popd
+    cd cmake/build && \
+    cmake -G Ninja -DCMAKE_PREFIX_PATH=/usr/local ../.. && \
+    ninja
