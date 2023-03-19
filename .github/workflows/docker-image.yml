@@ -22,14 +22,14 @@ jobs:
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: hebryan/StaticAnalyzer-WebUI-DevImage
       
       -
         name: Build and push
         id: build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
@@ -60,7 +60,7 @@ jobs:
       -
         name: Build and push
         id: build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile.minimal
