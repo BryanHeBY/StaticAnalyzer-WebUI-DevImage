@@ -1,4 +1,4 @@
-FROM hebryan/staticanalyzer-webui-devimage-static:v1.4
+FROM hebryan/staticanalyzer-webui-devimage-minimal:v1.4
 
 RUN apt-get update
 RUN apt-get install -y libstdc++-9-dev
