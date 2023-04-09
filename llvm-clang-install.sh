@@ -36,9 +36,3 @@ cp ${source_path_root}/libcxxabi-9.0.1.src.tar.xz .
 tar -xf libcxxabi-9.0.1.src.tar.xz
 mv libcxxabi-9.0.1.src libcxxabi
 
-cd ../..  #now under the folder /llvm-source-build
-mkdir llvm-build
-cd llvm-build
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON \
-        -DLLVM_ENABLE_ASSERTIONS=On -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV" ../llvm
-ninja install

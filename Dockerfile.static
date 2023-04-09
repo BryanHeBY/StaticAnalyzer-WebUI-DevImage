@@ -25,7 +25,6 @@ RUN mkdir -p /opt/llvm-source-build/llvm-build
 WORKDIR /opt/llvm-source-build/llvm-build
 RUN cmake -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
         -DLLVM_ENABLE_ASSERTIONS=On \
         -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV" \
         ../llvm && \
@@ -38,7 +37,6 @@ RUN mkdir -p /opt/grpc/cmake/build
 WORKDIR /opt/grpc/cmake/build
 RUN cmake -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=ON \
       -DgRPC_INSTALL=ON \
       -DgRPC_BUILD_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
